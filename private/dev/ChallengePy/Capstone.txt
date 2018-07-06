@@ -1,0 +1,17 @@
+## Capstone Project - Python Class 2018
+
+# Pick any *one* of below and write program in Python for your Capstone project
+1. Skip counting by any number between 2 and 10.
+2. Measuring area and perimeter of complex shapes.
+3. Print a matrix of numbers
+4. Roll a dice
+
+# Concepts to demonstrate in your program
+1. User input
+2. Variables
+3. Data types
+4. Print statements 
+5. Math operations
+6. Conditions
+7. Loops (iteration)
+8. Bonus points for reading/writing inputs from/to a file 

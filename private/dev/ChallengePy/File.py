@@ -1,0 +1,17 @@
+file = open("input1.txt", "w")
+file.write("Hello ")
+file.write("World! ")
+file.write("How ")
+file.write("are ")
+file.write("you ")
+file.write("doing? ")
+file.write("It ")
+file.write("is ")
+file.write("great ")
+file.write("to ")
+file.write("be ")
+file.write("here.")
+
+file = open("input1.txt", "r+")
+for line in file:
+    print (line)

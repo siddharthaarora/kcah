@@ -56,20 +56,26 @@ namespace Challenge
         {
             List<string> res = new List<string>();
             StringBuilder tabs = new StringBuilder();
+            StringBuilder s = new StringBuilder();
 
-            foreach(char c in jsonString)
+            foreach (char c in jsonString)
             {
-                StringBuilder s = new StringBuilder();
-
                 if (c == ' ')
                 {
                     continue;
                 }
-                else if (c == '{' || c == '[' || c== ',')
+                else if (c == '{' || c == '[')
                 {
                     s.Append(tabs.ToString());
                     s.Append(c);
                     tabs.Append("/t");
+                    res.Add(s.ToString());
+                    s.Clear();
+                }
+                else if (c == ',' || c == ':')
+                {
+                    s.Insert(0, tabs.ToString());
+                    s.Append(c);
                     res.Add(s.ToString());
                     s.Clear();
                 }
@@ -95,7 +101,7 @@ namespace Challenge
 
         public static void Test_PrettyPrintJSON()
         {
-            string json = @"{A:/""B/"",C:{D:/""E/"",F:{G:/""H/"",I:/""J/""}}}"; //["foo", {"bar":["baz",null,1.0,2]}]
+            string json = @"{A:""B"",C:{D:""E"",F:{G:""H"",I:""J""}}}"; //["foo", {"bar":["baz",null,1.0,2]}]
             List<string> res = PrettyPrintJSON(json);
 
             foreach(var s in res)

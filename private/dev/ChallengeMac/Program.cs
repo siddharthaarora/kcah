@@ -7,7 +7,10 @@ namespace Challenge
     {
         static void Main(string[] args)
         {
-            PrettyJSON.Test_PrettyPrintJSON();
+            string json = @"{A:""B"",C:{D:""E"",F:{G:""H"",I:""J""}}}"; //["foo", {"bar":["baz",null,1.0,2]}]
+
+            JSONParser parser = new JSONParser(json);
+            string res = parser.Parse();
         }
     }
 }

@@ -1,0 +1,9 @@
+# Visual Studio files
+*.suo
+*storage.ide*
+*.dll
+*.pdb
+*.cache
+*.props
+*/bin/*
+*/obj/*

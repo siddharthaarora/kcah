@@ -11,12 +11,6 @@ using System.Text;
 
 namespace Challenge
 {
-    public class JsonObject
-    {
-        public object JsonObject { get; set; }
-
-    }
-
     public class JSONParser
     {
         private string JsonText = "";
@@ -30,8 +24,10 @@ namespace Challenge
             return CurrentCharacter;
         }
 
-        private string Value()
+        private Json Value()
         {
+            Json json = new Json();
+
             switch (CurrentCharacter)
             {
                 case '{':
@@ -61,12 +57,13 @@ namespace Challenge
 
         private string ObjectValue()
         {
-            StringBuilder sb = new StringBuilder();
+            JsonObject jobj = new JsonObject();
+            jobj.Properties = new List<JsonProperty>();
 
             do
             {
                 var key = StringValue();
-                sb.Append(key);
+                jobj.k
                 Next();
                 sb.Append(CurrentCharacter);
                 var value = Value();

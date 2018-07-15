@@ -23,7 +23,7 @@ namespace Challenge
             CurrentCharacter = JsonText[CurrentIndex];
             return CurrentCharacter;
         }
-
+/*
         private Json Value()
         {
             Json json = new Json();
@@ -158,5 +158,7 @@ namespace Challenge
         {
             return this.Value();
         }
+        */
     }
+    
 }

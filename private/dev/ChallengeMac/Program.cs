@@ -7,7 +7,7 @@ namespace Challenge
     {
         static void Main(string[] args)
         {
-            PriorityQueue.Test_PriorityQueue();
+            Sort.Test_HeapSort();
         }
     }
 }

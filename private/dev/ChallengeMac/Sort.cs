@@ -48,6 +48,21 @@ namespace Challenge
                 Utilities.PrintList(a);
             }
         }
+
+        public static void HeapSort(List<int> a)
+        {
+            Heap heap = new Heap(a.Count);
+            heap.MakeHeap(a.ToArray());
+
+            List<int> sl = new List<int>();
+
+            for(int i=0;i<a.Count;i++)
+            {
+                sl.Add(heap.ExtractMin());
+            }
+
+            Utilities.PrintList(sl);
+        } 
         private static void Swap(List<int> a, int i, int j)
         {
             int temp = a[i];
@@ -71,6 +86,14 @@ namespace Challenge
             Utilities.PrintList(a);
             Sort.InsertionSort(a);
             Utilities.PrintList(a);
+        }
+
+        public static void Test_HeapSort()
+        {
+            Console.WriteLine("Testing Heap Sort - ");
+            List<int> a = new List<int>{3, 5, 9, 1, 4, 6, 2, 8, 7};
+            Utilities.PrintList(a);
+            Sort.HeapSort(a);
         }
     }
 }

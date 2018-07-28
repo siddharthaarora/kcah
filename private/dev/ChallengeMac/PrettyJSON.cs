@@ -52,52 +52,108 @@ namespace Challenge
 {
     public static class PrettyJSON
     {
-        public static List<string> PrettyPrintJSON(string jsonString)
+        public static List<string> PrettyPrintJSON(string A)
         {
             List<string> res = new List<string>();
-            StringBuilder tabs = new StringBuilder();
-            StringBuilder s = new StringBuilder();
-
-            foreach (char c in jsonString)
+            StringBuilder str = new StringBuilder();
+            int n = A.Length;
+            int tabs = 0;
+            
+            for (int i = 0; i < n; ) 
             {
-                if (c == ' ')
-                {
+                i = SkipSpace(A, i);
+                
+                if (i >= n)
+                    break;
+                
+                str = new StringBuilder();
+                char c = A[i];
+                
+                if (Delimiter(c)) {
+                    
+                    if (IsOpenBracket(c)) {
+                        for (int j = 0; j < tabs; j++)
+                            str.Append("\t");	                
+                        tabs++;
+                    } else if (IsClosedBracket(c)) {
+                        tabs--;
+                        for (int j = 0; j < tabs; j++)
+                            str.Append("\t");
+                    }
+                    
+                    str.Append(c);
+                    i++;
+                    
+                    if (i < n && CanAdd(A[i])) {
+                        str.Append(A[i]);
+                        i++;
+                    }
+                    
+                    res.Add(str.ToString());
+                    
                     continue;
                 }
-                else if (c == '{' || c == '[')
-                {
-                    s.Append(tabs.ToString());
-                    s.Append(c);
-                    tabs.Append("/t");
-                    res.Add(s.ToString());
-                    s.Clear();
+                
+                while (i < n && !Delimiter(A[i])) {
+                    str.Append(A[i]);
+                    i++;
                 }
-                else if (c == ',' || c == ':')
-                {
-                    s.Insert(0, tabs.ToString());
-                    s.Append(c);
-                    res.Add(s.ToString());
-                    s.Clear();
+                
+                if (i < n && CanAdd(A[i])) {
+                    str.Append(A[i]);
+                    i++;
                 }
-                else if (c == '}' || c == ']')
-                {
-                    if (tabs.Length > 0)
-                    {
-                        tabs.Remove(tabs.Length - 1, 1);
-                    }
-                    s.Append(tabs.ToString());
-                    s.Append(c);
-                    res.Add(s.ToString());
-                    s.Clear();
-                }
-                else
-                {
-                    s.Append(c);
-                }
-
+                
+                StringBuilder strB = new StringBuilder();
+                
+                for (int j = 0; j < tabs; j++)
+                    strB.Append("\t");
+                
+                strB.Append(str);
+                strB.Append("/n");
+                res.Add(strB.ToString());
             }
+            
             return res;
         }
+	
+        public static bool CanAdd(char c) 
+        {
+            if (c == ',' || c == ':')
+                return true;
+                
+            return false;
+        }
+            
+        public static bool Delimiter(char c) 
+        {
+            if (c == ',' || IsOpenBracket(c) || IsClosedBracket(c))
+                return true;
+            return false;
+        }
+        
+        public static bool IsOpenBracket(char c) 
+        {
+            if (c == '[' || c == '{')
+                return true;
+            return false;
+        }
+	
+        public static bool IsClosedBracket(char c) 
+        {
+            if (c == ']' || c == '}')
+                return true;
+            return false;
+        }
+        
+        public static int SkipSpace(String A, int i) 
+        {
+            int n = A.Length;
+            while (i < n && A[i] == ' ')
+                i++;
+            return i;
+        }
+	
 
         public static void Test_PrettyPrintJSON()
         {

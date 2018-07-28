@@ -7,7 +7,7 @@ namespace Challenge
     {
         static void Main(string[] args)
         {
-            Sort.Test_HeapSort();
+            VersionComparer.Test_CompareVersion();
         }
     }
 }

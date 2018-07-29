@@ -7,7 +7,7 @@ namespace Challenge
     {
         static void Main(string[] args)
         {
-            VersionComparer.Test_CompareVersion();
+            IPAddress.Test_RestoreIPAddressToDotNotation();
         }
     }
 }

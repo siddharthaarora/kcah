@@ -1,104 +1,97 @@
 using System;
-using System.Collections.Generic;
 using System.Text;
-//https://visualstudiomagazine.com/Articles/2015/10/20/Text-Pattern-Search-Trie-Class-NET.aspx?Page=1
+using System.Collections;
+using System.Collections.Generic;
+
 namespace Challenge
 {
     public class Trie
     {
-        private TrieNode root;
-
-        public void InsertRange(List<string> list)
+        public class Node
         {
-            foreach(var s in list)
-            {
-                Insert(s);
-            }
+            public string Label {get; set;}
+            public Dictionary<char, Node> Children = new Dictionary<char, Node>();
+        }
+
+        public Node Root {get;}
+
+        public Trie()
+        {
+            Root = new Node();
         }
         public void Insert(string s)
         {
-            root = Insert(root, s, 0);
+            var cur = Root;
+            for(int i = 0;i<s.Length;i++)
+            {
+                var c = s[i];
+
+                if (!cur.Children.ContainsKey(c))
+                {
+                    var n = new Node() {Label = s};
+                    cur.Children.Add(c, n);
+                    return;
+                }
+                cur = cur.Children[c];
+            }
         }
 
-        public TrieNode Insert(TrieNode n, string s, int index)
+        public bool Find(string s)
         {
-            if (index == s.Length)
+            var n = FindNode(s);
+            
+            if (n == null) 
+                return false;
+
+            foreach(var n2 in VisitNode(n))
             {
-                return n;
+                Console.WriteLine(n2.Label);
             }
 
-            char c = s[index];
-            if (n == null)
+            return true;
+        }
+
+        private Node FindNode(string s)
+        {
+            Node cur = Root;
+
+            for (int i=0; i<s.Length;i++)
             {
-                n = new TrieNode(c);
+                var c = s[i];
+
+                while (cur.Children.ContainsKey(c))
+                {
+                    cur = cur.Children[c];
+                }
             }
 
-            if (c < n.Value)
+            if (cur.Label == s)
             {
-                n.Left = Insert(n.Left, s, index);
-            }
-            else if (c > n.Value)
-            {
-                n.Right = Insert(n.Right, s, index);
+                return cur;
             }
             else
             {
-                n.Mid = Insert(n.Mid, s, index + 1);
-                n.Frequency += 1;
+                return null;
             }
-
-            return n;
         }
 
-        public string Prefix(string s)
+        private IEnumerable<Node> VisitNode(Node n)
         {
-            StringBuilder sb = new StringBuilder();
-            return Prefix(root, s, 0, sb);
+            foreach (var n1 in n.Children.Values)
+            {
+                foreach(var n2 in VisitNode(n1))
+                {
+                    yield return n2;
+                }
+            }
+            yield return n;
         }
 
-        public string Prefix(TrieNode n, string s, int index, StringBuilder sb)
+        public static void Test_TrieFindSubstring()
         {
-            char c = s[index];
-
-            if (c < n.Value)
-            {
-                return Prefix(n.Left, s, index, sb);
-            }
-            else if (c > n.Value)
-            {
-                return Prefix(n.Right, s, index, sb);
-            }
-            else if (n.Frequency == 1)
-            {
-                sb.Append(n.Value);
-                return sb.ToString();
-            }
-            else
-            {
-                sb.Append(n.Value);
-                return Prefix(n.Mid, s, index + 1, sb);
-            }
-
-        }
-    }
-
-
-    public class TrieNode
-    {
-        public char Value { get; set; }
-
-        public int Frequency { get; set; }
-
-        public TrieNode Left { get; set; }
-
-        public TrieNode Mid { get; set; }
-
-        public TrieNode Right { get; set; }
-
-        public TrieNode(char value)
-        {
-            this.Value = value;
-            this.Frequency = 0;
+            Trie t = new Trie();
+            t.Insert("banana");
+            t.Insert("bat");
         }
     }
 }

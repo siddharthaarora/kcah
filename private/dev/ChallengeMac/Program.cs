@@ -7,7 +7,7 @@ namespace Challenge
     {
         static void Main(string[] args)
         {
-            IPAddress.Test_RestoreIPAddressToDotNotation();
+            Trie.Test_TrieFindSubstring();
         }
     }
 }

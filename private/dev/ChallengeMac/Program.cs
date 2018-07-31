@@ -7,7 +7,7 @@ namespace Challenge
     {
         static void Main(string[] args)
         {
-            Trie.Test_TrieFindSubstring();
+            Zigzag.Test_ConvertStringToZigzag();
         }
     }
 }

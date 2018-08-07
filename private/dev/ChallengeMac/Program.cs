@@ -7,7 +7,7 @@ namespace Challenge
     {
         static void Main(string[] args)
         {
-            LexicographicSubset.Test_GetLexographicSubset();
+            Combinations.Test_GenerateCombinations();
         }
     }
 }

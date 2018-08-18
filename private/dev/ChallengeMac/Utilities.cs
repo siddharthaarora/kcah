@@ -36,5 +36,18 @@ namespace Challenge
             }
             Console.WriteLine(" }");
         }
+
+        public static void PrintMatrix<T>(T[,] m)
+        {
+            for(int i=0; i<m.GetLength(0); i++)
+            {
+                for(int j=0; j<m.GetLength(1); j++)
+                {
+                    Console.Write(m[i,j]);
+                    Console.Write(" ");
+                }
+                Console.WriteLine();
+            }
+        }
     }
 }

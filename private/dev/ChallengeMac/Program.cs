@@ -7,7 +7,7 @@ namespace Challenge
     {
         static void Main(string[] args)
         {
-            Combinations.Test_GenerateCombinations();
+            LongestCommonSubsequence.Test_FindLengthofLongestCommonSubsequence();
         }
     }
 }

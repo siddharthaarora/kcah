@@ -664,28 +664,30 @@
     ]
   },
   "packageFolders": {
-    "/Users/sidaro/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\sidaro\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/sidaro/src/kcah/private/dev/ChallengeMac/ChallengeMac.csproj",
+      "projectUniqueName": "C:\\Users\\sidaro\\src\\kcah\\private\\dev\\ChallengeMac\\ChallengeMac.csproj",
       "projectName": "ChallengeMac",
-      "projectPath": "/Users/sidaro/src/kcah/private/dev/ChallengeMac/ChallengeMac.csproj",
-      "packagesPath": "/Users/sidaro/.nuget/packages/",
-      "outputPath": "/Users/sidaro/src/kcah/private/dev/ChallengeMac/obj/",
+      "projectPath": "C:\\Users\\sidaro\\src\\kcah\\private\\dev\\ChallengeMac\\ChallengeMac.csproj",
+      "packagesPath": "C:\\Users\\sidaro\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sidaro\\src\\kcah\\private\\dev\\ChallengeMac\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/sidaro/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\sidaro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

@@ -7,7 +7,7 @@ namespace Challenge
     {
         static void Main(string[] args)
         {
-            ReverseString.Test_ReverseStringWithSpecicalCharacters();
+            Tinyurl.Test_CreateHandle();
         }
     }
 }

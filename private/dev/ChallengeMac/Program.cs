@@ -7,7 +7,7 @@ namespace Challenge
     {
         static void Main(string[] args)
         {
-            Tinyurl.Test_CreateHandle();
+            LinkedList.Test_GetRandomNodeFromList();
         }
     }
 }

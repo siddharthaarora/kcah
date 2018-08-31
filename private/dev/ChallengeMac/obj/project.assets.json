@@ -670,11 +670,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sidaro\\src\\kcah\\private\\dev\\ChallengeMac\\ChallengeMac.csproj",
+      "projectUniqueName": "D:\\src\\kcah\\private\\dev\\ChallengeMac\\ChallengeMac.csproj",
       "projectName": "ChallengeMac",
-      "projectPath": "C:\\Users\\sidaro\\src\\kcah\\private\\dev\\ChallengeMac\\ChallengeMac.csproj",
+      "projectPath": "D:\\src\\kcah\\private\\dev\\ChallengeMac\\ChallengeMac.csproj",
       "packagesPath": "C:\\Users\\sidaro\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sidaro\\src\\kcah\\private\\dev\\ChallengeMac\\obj\\",
+      "outputPath": "D:\\src\\kcah\\private\\dev\\ChallengeMac\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

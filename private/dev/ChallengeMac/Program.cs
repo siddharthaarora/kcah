@@ -7,7 +7,7 @@ namespace Challenge
     {
         static void Main(string[] args)
         {
-            LinkedList.Test_GetRandomNodeFromList();
+            ArrayAlgos.Test_FindUniqueElement();
         }
     }
 }

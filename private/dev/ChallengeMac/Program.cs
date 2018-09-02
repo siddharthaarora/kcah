@@ -7,7 +7,7 @@ namespace Challenge
     {
         static void Main(string[] args)
         {
-            ArrayAlgos.Test_FindUniqueElement();
+            Graph.Test_GraphAdjacencyMatrix();
         }
     }
 }

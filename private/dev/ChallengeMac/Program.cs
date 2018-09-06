@@ -7,7 +7,7 @@ namespace Challenge
     {
         static void Main(string[] args)
         {
-            Graph.Test_GraphAdjacencyMatrix();
+            Matrix.Test_FindNumberOfIslands();
         }
     }
 }

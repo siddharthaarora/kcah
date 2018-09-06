@@ -128,7 +128,7 @@ namespace Challenge
             Console.Write("\r\n");
         }
 
-        public static void Test_GraphAdjacencyMatrix()
+        public static Graph CreateSampleGraph()
         {
             var graph = new Graph();
 
@@ -149,23 +149,25 @@ namespace Challenge
             var o = graph.AddNode("O");
             var p = graph.AddNode("P");
 
+            a.AddEdge(b, 1)
+             .AddEdge(c, 1)
+             .AddEdge(d, 1);
+
+            g.AddEdge(h, 1)
+             .AddEdge(i, 1);
+
+            g.AddEdge(k, 1);
+
+            n.AddEdge(o, 1)
+             .AddEdge(p, 1);
+
+            return graph;
+        }
+        public static void Test_GraphAdjacencyMatrix()
+        {
+            var graph = Graph.CreateSampleGraph();
+
             int?[,] adjMatrix = graph.CreateAdjacencyMatrix();
-
-            graph.PrintAdjacencyMatrix(adjMatrix);
-
-            a.AddEdge(b,1)
-             .AddEdge(c,1)
-             .AddEdge(d,1);
-
-            g.AddEdge(h,1)
-             .AddEdge(i,1);
-
-            g.AddEdge(k,1);
-
-            n.AddEdge(o,1)
-             .AddEdge(p,1);
-
-            adjMatrix = graph.CreateAdjacencyMatrix();
 
             graph.PrintAdjacencyMatrix(adjMatrix);
         }

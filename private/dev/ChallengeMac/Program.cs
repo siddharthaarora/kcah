@@ -7,7 +7,7 @@ namespace Challenge
     {
         static void Main(string[] args)
         {
-            Matrix.Test_FindNumberOfIslands();
+            ArrayAlgos.Test_IsSumofPairsEqualToZero();
         }
     }
 }

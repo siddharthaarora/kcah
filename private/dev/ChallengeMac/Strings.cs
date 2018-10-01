@@ -48,11 +48,14 @@ namespace Challenge
 
         public static void Test_IsMetaString()
         {
-            string a = "string";
-            string b = "rsting";
-
-            Console.WriteLine("The two strings - " + a + " and " + b + " are meta strings: " + IsMetaString(a, b).ToString());
+            int steps = int.Parse(Console.ReadLine());
+            for(int i=0; i<steps; i++)
+            {
+                string a = Console.ReadLine();
+                string b = Console.ReadLine();
+                
+                Console.WriteLine("The two strings - " + a + " and " + b + " are meta strings: " + IsMetaString(a, b).ToString());
+            }
         }
     }
-
 }

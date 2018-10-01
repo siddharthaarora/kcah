@@ -7,7 +7,7 @@ namespace Challenge
     {
         static void Main(string[] args)
         {
-            StringAlgos.Test_IsMetaString();
+            PainterPartition.Test_FindMinimumTimeToPaintBoards();
         }
     }
 }

@@ -32,19 +32,30 @@ namespace Challenge
             }
 
             int t = 0;
+            int tpp = sum / numPainters;
 
-            for(int i=0;i<a.Length;i++)
+            for (int i=0;i<a.Length;i++)
             {
-                if (t+a[i] > sum/numPainters)
+                if (t + a[i] >= tpp && a.Length-i >= numPainters)
                 {
-                    if (t+a[i] > min)
+                    if (t + a[i] > min)
                     {
-                        min = t+a[i];
+                        min = t + a[i];
                     }
                     t = 0;
                     continue;
                 }
-                t+= a[i];
+                else if (t < tpp && a.Length - i < numPainters)
+                {
+                    if (t > min)
+                    {
+                        min = t;
+                    }
+                    t = 0;
+                    continue;
+                }
+                     
+                t = t + a[i];
             }
 
             return min;
@@ -52,13 +63,32 @@ namespace Challenge
 
         public static void Test_FindMinimumTimeToPaintBoards()
         {
-            int numBoards = 4;
-            int numPainters = 2;
-            int[] a = new int[] {10, 10, 10, 10};
+            //int numBoards = 4;
+            //int numPainters = 3;
+            //int[] a = new int[] {10, 20, 30, 40};
 
-            int minTimeToPaint = FindMinimumTimeToPaintBoards(numPainters, numBoards, a);
+            Console.WriteLine("Enter number of test cases");
+            int steps = int.Parse(Console.ReadLine());
+            for (int i = 0; i < steps; i++)
+            {
+                Console.WriteLine("Enter number of Painters and Boards, separated by a single space");
+                string i1 = Console.ReadLine();
+                string[] a1 = i1.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                int numPainters = Int32.Parse(a1[0]);
+                int numBoards = Int32.Parse(a1[1]);
 
-            Console.WriteLine("Minimum time to paint this room will be: " + minTimeToPaint.ToString());
+                Console.WriteLine("Enter Board lengths, separated by a single space");
+                string i2 = Console.ReadLine();
+                string[] a2 = i2.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                int[] a = new int[a2.Length];
+                for (int j = 0; j < a2.Length; j++)
+                { a[j] = Int32.Parse(a2[j]); }
+
+                int minTimeToPaint = FindMinimumTimeToPaintBoards(numPainters, numBoards, a);
+
+                Console.WriteLine("Number of Painters: " + numPainters.ToString() + "; number of Boards: " + numBoards.ToString() + "; Board lengths: " + i2.ToString());
+                Console.WriteLine("Minimum time to paint this set of boards will be: " + minTimeToPaint.ToString());
+            }
         }
     }
 }

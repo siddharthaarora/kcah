@@ -7,7 +7,7 @@ namespace Challenge
     {
         static void Main(string[] args)
         {
-            MinCutSquare.Test_FindMinimumNumberOfSquaresInRectangle();
+            SaveIronman.Test_IsPalindrome();
         }
     }
 }

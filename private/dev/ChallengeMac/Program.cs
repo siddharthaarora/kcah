@@ -7,7 +7,7 @@ namespace Challenge
     {
         static void Main(string[] args)
         {
-            PainterPartition.Test_FindMinimumTimeToPaintBoards();
+            SaveIronman.Test_IsPalindrome();
         }
     }
 }

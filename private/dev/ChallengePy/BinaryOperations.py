@@ -1,8 +1,18 @@
-def bin(s):
-    if s > 1:
-        return bin(s >> 1) + str(s & 1)
+def bin(n):
+    print(n)
+    if n > 1:
+        return bin(n >> 1) + str(n & 1)
     else:
-        return str(s)
+        return str(n)
+
+def bin2(n):
+    if (n <=1):
+        print(str(n))
+    s = ''
+    while(n > 0):
+        s += str(n & 1)
+        n = n >> 1
+    print (s[::-1])
 
 def printSetBits(n):
     i = 1
@@ -27,4 +37,5 @@ def ConvertInt32ToByteString(num):
 
     #printSetBits(n)
 
+bin2(9)
 #ConvertInt32ToByteString(input('enter a number - '))

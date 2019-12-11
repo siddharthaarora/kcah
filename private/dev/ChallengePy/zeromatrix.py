@@ -6,31 +6,29 @@ def ZeroMatrix(m, r, c):
         return
     
     printMatrix(m, r, c)
-
+    
     for i in range(0, r):
         for j in range(0, c):
             if (m[i][j] == 0):
-                print("making it -1")
                 m[i][j] = -1
     
-    printMatrix(m, r, c)
-
     for i in range(0, r):
         for j in range(0, c):
             if (m[i][j] == -1):
-                makeRowColumnZero(m, i, j)
+                makeRowColumnZero(m, i, j, r, c)
                 m[i][j] = 0
 
     printMatrix(m, r, c)
 
-def makeRowColumnZero(m, r, c):
-    i = 0
-    while (i < c):
-        m[r][i] = 0
-        i+=1
-    while (i < r):
-        m[i][c] = 0
-        i+=1
+def makeRowColumnZero(m, i, j, r, c):
+    x = 0
+    while (x < c):
+        m[i][x] = 0
+        x+=1
+    x = 0
+    while (x < r):
+        m[x][j] = 0
+        x+=1
 
 def printMatrix(m, r, c):
     for i in range(0, r):

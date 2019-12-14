@@ -56,7 +56,7 @@ def GenerateSampleTree(root):
     root.Insert(9)
 
 def GenerateBSTFromSortedArray(root):
-    a = [10,-3,1,5,9]
+    a = [10,3,7,5,9]
     count = len(a)
     mid = int(count / 2)
     root.Insert(a[mid])

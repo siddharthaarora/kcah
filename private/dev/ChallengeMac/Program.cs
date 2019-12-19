@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Kcah;
 
 namespace Challenge
 {
@@ -7,7 +8,7 @@ namespace Challenge
     {
         static void Main(string[] args)
         {
-            SaveIronman.Test_IsPalindrome();
+            TestLinkedList.TestLinkedList_AddNodes();
         }
     }
 }

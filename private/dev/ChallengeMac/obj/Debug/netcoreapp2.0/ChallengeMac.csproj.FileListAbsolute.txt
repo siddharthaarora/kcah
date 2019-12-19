@@ -20,3 +20,13 @@ D:\src\kcah\private\dev\ChallengeMac\bin\Debug\netcoreapp2.0\ChallengeMac.runtim
 D:\src\kcah\private\dev\ChallengeMac\bin\Debug\netcoreapp2.0\ChallengeMac.dll
 D:\src\kcah\private\dev\ChallengeMac\bin\Debug\netcoreapp2.0\ChallengeMac.pdb
 D:\src\kcah\private\dev\ChallengeMac\obj\Debug\netcoreapp2.0\ChallengeMac.csprojAssemblyReference.cache
+C:\src\kcah\private\dev\ChallengeMac\obj\Debug\netcoreapp2.0\ChallengeMac.csprojAssemblyReference.cache
+C:\src\kcah\private\dev\ChallengeMac\obj\Debug\netcoreapp2.0\ChallengeMac.AssemblyInfoInputs.cache
+C:\src\kcah\private\dev\ChallengeMac\obj\Debug\netcoreapp2.0\ChallengeMac.AssemblyInfo.cs
+C:\src\kcah\private\dev\ChallengeMac\obj\Debug\netcoreapp2.0\ChallengeMac.dll
+C:\src\kcah\private\dev\ChallengeMac\obj\Debug\netcoreapp2.0\ChallengeMac.pdb
+C:\src\kcah\private\dev\ChallengeMac\bin\Debug\netcoreapp2.0\ChallengeMac.deps.json
+C:\src\kcah\private\dev\ChallengeMac\bin\Debug\netcoreapp2.0\ChallengeMac.runtimeconfig.json
+C:\src\kcah\private\dev\ChallengeMac\bin\Debug\netcoreapp2.0\ChallengeMac.runtimeconfig.dev.json
+C:\src\kcah\private\dev\ChallengeMac\bin\Debug\netcoreapp2.0\ChallengeMac.dll
+C:\src\kcah\private\dev\ChallengeMac\bin\Debug\netcoreapp2.0\ChallengeMac.pdb

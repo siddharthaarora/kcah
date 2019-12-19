@@ -1,0 +1,11 @@
+C:\src\kcah\private\dev\ChallengeMac\bin\Debug\netcoreapp3.1\ChallengeMac.exe
+C:\src\kcah\private\dev\ChallengeMac\bin\Debug\netcoreapp3.1\ChallengeMac.deps.json
+C:\src\kcah\private\dev\ChallengeMac\bin\Debug\netcoreapp3.1\ChallengeMac.runtimeconfig.json
+C:\src\kcah\private\dev\ChallengeMac\bin\Debug\netcoreapp3.1\ChallengeMac.runtimeconfig.dev.json
+C:\src\kcah\private\dev\ChallengeMac\bin\Debug\netcoreapp3.1\ChallengeMac.dll
+C:\src\kcah\private\dev\ChallengeMac\bin\Debug\netcoreapp3.1\ChallengeMac.pdb
+C:\src\kcah\private\dev\ChallengeMac\obj\Debug\netcoreapp3.1\ChallengeMac.csprojAssemblyReference.cache
+C:\src\kcah\private\dev\ChallengeMac\obj\Debug\netcoreapp3.1\ChallengeMac.AssemblyInfoInputs.cache
+C:\src\kcah\private\dev\ChallengeMac\obj\Debug\netcoreapp3.1\ChallengeMac.AssemblyInfo.cs
+C:\src\kcah\private\dev\ChallengeMac\obj\Debug\netcoreapp3.1\ChallengeMac.dll
+C:\src\kcah\private\dev\ChallengeMac\obj\Debug\netcoreapp3.1\ChallengeMac.pdb

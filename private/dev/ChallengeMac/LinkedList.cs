@@ -1,93 +1,76 @@
+// Implement linked list
 
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
-namespace Challenge
+namespace Kcah
 {
-    public class LinkedList
+    public class LinkedListNode<T>
     {
-        private LinkedListNode head;
-        public class LinkedListNode
-        {
-            public int Value {get; set;}
-            public LinkedListNode Next {get; set;}
+        public T Data {get; set;}
+        public LinkedListNode<T> Next {get; set;}
 
-            public LinkedListNode(int val)
-            {
-                this.Value = val;
-            }
+        public LinkedListNode(T data)
+        {
+            this.Data = data;
         }
+    }
+    public class LinkedList<T> 
+    {
+        public LinkedListNode<T> Head {get; set;}
+        public LinkedListNode<T> Last {get; set;}
 
-        public LinkedList()
-        { }
+        public int Count {get; set;}
 
-        public LinkedListNode Head {get {return head;}}
-
-        public void AddNode(int val)
+        public void Add(LinkedListNode<T> node)
         {
-            LinkedListNode node = new LinkedListNode(val);
+            if (node is null)
+            { return; }
 
-            if (this.Head == null)
+            if (this.Head is null)
             {
-                head = node;
+                this.Head = node;
+                this.Last = node;
             }
             else
             {
-                LinkedListNode t = head;
-                while(t.Next != null)
-                {
-                    t = t.Next;
-                }
-                t.Next = node;
+                this.Last.Next = node;
+                this.Last = node;
             }
         }
 
-        // Select a Random Node from a Singly Linked List
-        // Given a singly linked list, select a random node from linked list 
-        // (the probability of picking a node should be 1/N if there are N nodes in list). 
-        // You are given a random number generator.
-        public LinkedListNode GetRandomNodeFromList()
+        public void Print()
         {
-            int count = 0;
-
-            LinkedListNode t = head;
-            while(t.Next != null)
+            LinkedListNode<T> t = this.Head;
+            while (t != null)
             {
-                count++;
+                Console.Write(Convert.ToString(t.Data) + "-->");
                 t = t.Next;
-            }
-
-            Random rand = new Random();
-            int index = rand.Next(count);
-
-            t = head;
-            count = 0;
-            while(t.Next != null)
-            {
-                if (count == index)
-                {
-                    break;
-                }
-                count++;
-                t = t.Next;
-            }
-
-            return t;
+            };
         }
 
-        public static void Test_GetRandomNodeFromList()
-        {
-            LinkedList list = new LinkedList();
-            list.AddNode(6);                                             
-            list.AddNode(1);  
-            list.AddNode(4);              
-            list.AddNode(2);  
-            list.AddNode(8);
+    }
 
-            for(int i=1;i<=5;i++)
-            { 
-                Console.Write("Printing " + i.ToString() + " random node value from the list: ");
-                Console.WriteLine(list.GetRandomNodeFromList().Value);
-            }  
+    public static class TestLinkedList
+    {
+        public static void TestLinkedList_AddNodes()
+        {
+            Kcah.LinkedList<int> l = new Kcah.LinkedList<int>();
+
+            Kcah.LinkedListNode<int> n1 = new Kcah.LinkedListNode<int>(3);
+            l.Add(n1);
+            Kcah.LinkedListNode<int> n2 = new Kcah.LinkedListNode<int>(5);
+            l.Add(n2);
+            Kcah.LinkedListNode<int> n3 = new Kcah.LinkedListNode<int>(1);
+            l.Add(n3);
+            Kcah.LinkedListNode<int> n4 = new Kcah.LinkedListNode<int>(9);
+            l.Add(n4);
+            Kcah.LinkedListNode<int> n5 = new Kcah.LinkedListNode<int>(7);
+            l.Add(n5);
+            
+            l.Print();            
         }
     }
 }
+

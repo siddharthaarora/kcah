@@ -4,20 +4,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using System.Diagnostics;
+
 namespace Kcah
 {
-    public class hashmap<T1, T2> : System.Collections.Generic.IEnumerable<T1> 
+    public class HashMap<T1, T2> : System.Collections.Generic.IEnumerable<T1> 
     {
         private LinkedList<T1, T2>[] map = null;
 
         private int GetHashCode(T1 key)
         {
-            return this.GetHashCode(key) % this.Capacity;
+            return Math.Abs(Convert.ToString(key).GetHashCode() % this.Capacity);
         }
 
         public int Capacity {get; set;}
 
-        public hashmap()
+        public HashMap()
         {
             if (this.Capacity == 0)
             { this.Capacity = 100; }
@@ -28,28 +30,53 @@ namespace Kcah
         public void Put(T1 key, T2 value)
         {
             int hash = this.GetHashCode(key);
-            
             LinkedList<T1, T2> list = map[hash];
             LinkedListNode<T1, T2> node = new LinkedListNode<T1, T2>(key, value);
 
             if (list != null)
             {
-                list = new LinkedList<T1, T2>();
-                map[hash] = list;
+                LinkedListNode<T1, T2> t = list.Head;
+                do
+                { 
+                    if (t.Key.ToString() == Convert.ToString(key))
+                    {
+                        throw new Exception("Key already exists");
+                    }
+                    t = t.Next; 
+                }
+                while(t.Next != null);
             }
+
+            list = new LinkedList<T1, T2>();
             list.Add(node);
+            map[hash] = list;
         }
 
         public T2 Get(T1 key)
         {
             int hash = this.GetHashCode(key);
             LinkedList<T1, T2> list = map[hash];
-            if 
+            
+            if (list is null)
+            { throw new KeyNotFoundException(); }
+
+            LinkedListNode<T1, T2> t = list.Head;
+            do
+            { 
+                if (t.Key.ToString() == Convert.ToString(key))
+                {
+                    return t.Value;
+                }
+                list.Last = list.Last.Next; 
+            }
+            while(t.Next != null);
+
+            throw new KeyNotFoundException();
         }
 
         public T2 this[T1 key]
         {
-            get{ return (T2)null;}
+            get{ return Get(key);}
         }
 
         public IEnumerator<T1> GetEnumerator()
@@ -61,6 +88,14 @@ namespace Kcah
         {
             // Lets call the generic version here
             return this.GetEnumerator();
+        }
+
+        public void Print()
+        {
+            foreach (LinkedList<T1,T2> l in map)
+            {
+
+            }
         }
     }
 
@@ -76,7 +111,7 @@ namespace Kcah
             this.Value = value;
         }
     }
-   internal class LinkedList<K, V> 
+    internal class LinkedList<K, V> 
     {
         public LinkedListNode<K, V> Head {get; set;}
         public LinkedListNode<K, V> Last {get; set;}
@@ -110,6 +145,21 @@ namespace Kcah
             };
         }
 
+    }
+
+    public static class TestHashmap
+    {
+        public static void TestHashMap_PutGetKeyValue()
+        {
+            HashMap<string, string> map = new HashMap<string, string>();
+            map.Put("a", "1");
+            map.Put("b", "2");
+            map.Put("c", "3");
+            map.Put("d", "4");
+
+            Debug.Assert(Convert.ToString(map.Get("a")) == "2", "map.Get(a) != 2; so this assertion should fail.");
+            Debug.Assert(Convert.ToString(map["a"]) == "1", "map[a] = 1; so this is great!");
+        }
     }
 }
 

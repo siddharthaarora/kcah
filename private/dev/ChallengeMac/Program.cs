@@ -8,7 +8,8 @@ namespace Challenge
     {
         static void Main(string[] args)
         {
-            TestLinkedList.TestLinkedList_AddNodes();
+            //TestLinkedList.TestLinkedList_AddNodes();
+            TestHashmap.TestHashMap_PutGetKeyValue();
         }
     }
 }

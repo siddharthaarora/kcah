@@ -9,7 +9,8 @@ namespace Challenge
         static void Main(string[] args)
         {
             //TestLinkedList.TestLinkedList_AddNodes();
-            TestHashmap.TestHashMap_PutGetKeyValue();
+            //TestHashmap.TestHashMap_PutGetKeyValue();
+            TestGraph.Test_GetAdjacencyMatrix();
         }
     }
 }

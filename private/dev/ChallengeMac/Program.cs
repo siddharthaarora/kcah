@@ -10,7 +10,8 @@ namespace Challenge
         {
             //TestLinkedList.TestLinkedList_AddNodes();
             //TestHashmap.TestHashMap_PutGetKeyValue();
-            TestGraph.Test_GetAdjacencyMatrix();
+            //TestGraph.Test_GetAdjacencyMatrix();
+            BitManipulation.Test_InsertNBits();
         }
     }
 }

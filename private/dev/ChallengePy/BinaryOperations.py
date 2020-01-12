@@ -37,5 +37,8 @@ def ConvertInt32ToByteString(num):
 
     #printSetBits(n)
 
-bin2(9)
-#ConvertInt32ToByteString(input('enter a number - '))
+# n = input('enter a number - ')
+# ConvertInt32ToByteString(n)
+
+ConvertInt32ToByteString(1 << 4)
+ConvertInt32ToByteString((1 << 4) - 1)

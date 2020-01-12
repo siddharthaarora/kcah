@@ -19,7 +19,7 @@ using System.Collections.Generic;
 
 namespace Challenge
 {
-    public static class IPAddress
+    public class IPAddress
     {
         public static List<string> RestoreIPAddressToDotNotation(string A)
         {
@@ -71,7 +71,6 @@ namespace Challenge
             
             return res;
         }
-
         public static void Test_RestoreIPAddressToDotNotation()
         {
             List<string> ips = RestoreIPAddressToDotNotation("00000"); //25525511135

@@ -1,5 +1,4 @@
 def bin(n):
-    print(n)
     if n > 1:
         return bin(n >> 1) + str(n & 1)
     else:
@@ -40,5 +39,5 @@ def ConvertInt32ToByteString(num):
 # n = input('enter a number - ')
 # ConvertInt32ToByteString(n)
 
-ConvertInt32ToByteString(1 << 4)
-ConvertInt32ToByteString((1 << 4) - 1)
+# ConvertInt32ToByteString(1 << 4)
+# ConvertInt32ToByteString((1 << 4) - 1)

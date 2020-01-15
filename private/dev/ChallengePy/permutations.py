@@ -1,5 +1,4 @@
 def permute(a, l, r): 
-    print("l= ", l, "r= ", r)
     if l==r: 
         print(toString(a))
     else: 

@@ -52,20 +52,35 @@ def GenerateSampleLinkedList():
     l.Insert(9)
     l.Insert(5)
     l.Insert(6)
-    l.Insert(7)
+    l.Insert(4)
     l.Insert(2)
     return l
 
 def PrintLinkedList(l):
     h = l.head
-    while(h.next != None):
+    while(h != None):
         print(h.value, end="")
-        if ( h.next.next != None):
+        if ( h.next != None):
             print(" --> ", end="")
         h = h.next
+    print()
+
+def RemoveDuplicates(l):
+    h = l.head
+    map = {}
+    curr = None
+    while(h != None):
+        if h.value in map:
+            curr.next = h.next
+        else:
+            map[h.value] = 1
+            curr = h
+        h = h.next
+    print(map)
 
 # driver code
 l = GenerateSampleLinkedList()
 PrintLinkedList(l)
-l.Reverse()
-#PrintLinkedList(l)
+#l.Reverse()
+RemoveDuplicates(l)
+PrintLinkedList(l)

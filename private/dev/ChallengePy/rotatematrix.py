@@ -24,23 +24,32 @@
 # -                                (1,0) -> (0,1)
 # 2   I   F   C                    (1,1) -> (1,1)
 #                                  (1,2) -> (2,1)
-#                                  you get the idea
+#                                  (2,0) -> (0,0)
+#                                  (2,1) -> (1,0)
+#                                  (2,2) -> (2,0)
+# (0,0) -> (0,2) -> (2,2) -> (2,0) -> (0,0)
+# Algo
+# for i = 0, n:
+#     temp = top[i]
+#     top[i] = left[i]
+#     left[i] = bottom[i]
+#     bottom[i] = right[i]
+#     right[i] = temp
+
+
 
 def RotateMatrix(m):
     n = len(m)
-    i = 0
-    j = n -1
-    k = 0
-    while i < n:
-        while k < n:
-            print(i,j,k)
-            t = m[k][j]
-            m[k][j] = m[i][k]
-            m[i][k] = t
-            k = k + 1
-        i = i + 1
-        j = j - 1
-        k = 0
+    for layer in range (0, int(n/2)):
+        first = layer
+        last = n - 1 - layer
+        for i in range (first, last):
+            offset = i - first
+            top = m[first][i] # save top
+            m[first][i] = m[last - offset][first] # left -> top
+            m[last - offset][first] = m[last][last - offset] # bottom -> left
+            m[last][last - offset] = m[i][last] # right -> bottom
+            m[i][last] = top # right -> left
 
 def PrintMatrix(m):
     for i in range (0, len(m)):

@@ -44,15 +44,27 @@ class LinkedList:
             self.last = c
             print("head: ", self.head.value, "last: ", self.last.value)
 
-def GenerateSampleLinkedList():
+def GenerateSampleLinkedList1():
     l = LinkedList()
-    l.Insert(0)
+    l.Insert(4)
     l.Insert(3)
     l.Insert(1)
+    # l.Insert(9)
+    # l.Insert(5)
+    # l.Insert(6)
+    # l.Insert(1)
+    return l
+
+def GenerateSampleLinkedList2():
+    l = LinkedList()
     l.Insert(9)
-    l.Insert(5)
-    l.Insert(6)
-    l.Insert(10)
+    l.Insert(3)
+    l.Insert(7)
+    l.Insert(1)
+    # l.Insert(9)
+    # l.Insert(5)
+    # l.Insert(6)
+    # l.Insert(1)
     return l
 
 def PrintLinkedList(l):
@@ -113,10 +125,76 @@ def PartitionLinkedList(l, x):
         if (i == 7):
             break
 
+# Sum Lists: You have two numbers represented by a linked list, where each node contains a single
+# digit. The digits are stored in reverse order, such that the 1's digit is at the head of the iist. Write a
+# function that adds the two numbers and returns the sum as a linked list.
+# EXAMPLE
+# input; ( 7 - > 1 -> 6) + (S -> 9 -> 2). That is, 617 + 295.
+# Output; 2 -> 1 -> 9.That is, 912.
+# FOLLOW UP
+# Suppose the digits are stored in forward order. Repeat the above problem.
+# Input (6 -> 1 -> 7) + (2 -> 9 -> S). That is, 617 + 295.
+# Output: 9 -> 1 -> 2.That is, 912.
+
+def AddNumbersInLinkedList(l1, l2):
+    n1 = l1.head
+    n2 = l2.head
+    sumlist = LinkedList()
+    sum = 0
+    pow = 0
+    carry = 0
+
+    while (True):
+        if (n1 != None and n2 != None):
+            t = n1.value + n2.value + carry
+            if t >=10:
+                sum = sum + ((t % 10) * 10 ** pow)
+                carry = 1
+            else:
+                sum = sum + (t * 10 ** pow)
+                carry = 0
+            n1 = n1.next
+            n2 = n2.next
+        elif (n1 != None and n2 == None):
+            t = n1.value + carry
+            if t >= 10:
+                sum = sum + ((t % 10) * 10 ** pow)
+                carry = 1
+            else:
+                sum = sum + (t * 10 ** pow)
+                carry = 0
+            n1 = n1.next
+        elif (n1 == None and n2 != None):
+            t = n2.value + carry
+            if t >= 10:
+                sum = sum + ((t % 10) * 10 ** pow)
+                carry = 1
+            else:
+                sum = sum + (t * 10 ** pow)
+                carry = 0
+            n2 = n2.next
+        else:
+            if carry == 1:
+                sum = sum + 10 ** pow
+            break
+        pow = pow + 1
+    
+    while(sum > 0):
+        digit = sum % 10
+        sumlist.Insert(digit)
+        sum = int(sum / 10)
+    return sumlist
+
 # driver code
-l = GenerateSampleLinkedList()
-PrintLinkedList(l)
-#l.Reverse()
-#RemoveDuplicates(l)
-PartitionLinkedList(l,4)
-PrintLinkedList(l)
+l1 = GenerateSampleLinkedList1()
+l2 = GenerateSampleLinkedList2()
+PrintLinkedList(l1)
+PrintLinkedList(l2)
+
+sumlist = AddNumbersInLinkedList(l1, l2)
+PrintLinkedList (sumlist)
+# l.Reverse()
+# RemoveDuplicates(l)
+# PartitionLinkedList(l,4)
+# PrintLinkedList(l)
+

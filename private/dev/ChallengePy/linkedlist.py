@@ -43,15 +43,23 @@ class LinkedList:
             self.head = self.last
             self.last = c
             print("head: ", self.head.value, "last: ", self.last.value)
-
+        
+    def Length(self):
+        l = 0
+        head = self.head
+        while (head != None):
+            l = l+1
+            head = head.next
+        return l
+    
 def GenerateSampleLinkedList1():
     l = LinkedList()
     l.Insert(4)
     l.Insert(3)
     l.Insert(1)
-    # l.Insert(9)
-    # l.Insert(5)
-    # l.Insert(6)
+    l.Insert(3)
+    l.Insert(4)
+#    l.Insert(6)
     # l.Insert(1)
     return l
 
@@ -185,16 +193,58 @@ def AddNumbersInLinkedList(l1, l2):
         sum = int(sum / 10)
     return sumlist
 
+
+# Palindrome: Implement a function to check if a linked list is a palindrome
+class Result:
+    def __init__(self):
+        self.node = LinkedListNode()
+        self.result = False
+
+def IsLinkedListPalindrome(l):
+    length = l.Length()
+    p = IsLinkedListPalindromeRecurse(l.head, length)
+    return p.result
+
+
+def IsLinkedListPalindromeRecurse(head, l):
+    print("head: ", head.value)
+    if (head == None) or (l <= 0):
+        res = Result()
+        res.node = head
+        res.result = True
+        return res
+    elif (l == 1):
+        res = Result()
+        res.node = head.next
+        res.result = True
+        return res
+    
+    res = IsLinkedListPalindromeRecurse(head.next, l - 2)
+    print("res: ", res.node.value)
+
+    if (res.result == False or res.node == None):
+        return res
+
+    if (head.value == res.node.value):
+        res.result = True
+    else:
+        res.result = False
+    
+    res.node = res.node.next
+
+    return res
+
 # driver code
 l1 = GenerateSampleLinkedList1()
-l2 = GenerateSampleLinkedList2()
+# l2 = GenerateSampleLinkedList2()
+# PrintLinkedList(l1)
 PrintLinkedList(l1)
-PrintLinkedList(l2)
+print(IsLinkedListPalindrome(l1))
 
-sumlist = AddNumbersInLinkedList(l1, l2)
-PrintLinkedList (sumlist)
+#sumlist = AddNumbersInLinkedList(l1, l2)
+#PrintLinkedList (sumlist)
 # l.Reverse()
 # RemoveDuplicates(l)
 # PartitionLinkedList(l,4)
-# PrintLinkedList(l)
+
 

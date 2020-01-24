@@ -55,7 +55,7 @@ class LinkedList:
 def GenerateSampleLinkedList1():
     l = LinkedList()
     l.Insert(4)
-    l.Insert(3)
+    l.Insert(2)
     l.Insert(1)
     l.Insert(3)
     l.Insert(4)
@@ -234,17 +234,81 @@ def IsLinkedListPalindromeRecurse(head, l):
 
     return res
 
+# Loop Detection: Given a circular linked list, implement an algorithm that returns the node at the
+# beginning of the loop.
+# DEFINITION
+# Circular linked list: A (corrupt) linked list in which a node's next pointer points to an earlier node, so
+# as to make a loop in the linked list.
+# EXAMPLE
+# Input: A -> B -> C -> D -> E -> C [the same C as earlier]
+# Output: C
+
+def IsCircularLinkedList(l):
+    if (l == None):
+        return False
+    
+    s = l.head
+    if (s.next != None):
+        f = s.next
+    else:
+        return False
+    
+    while(s != None):
+        if (s == f):
+            return True
+        s = s.next
+        if (f != None and f.next != None):
+            f = f.next.next
+    return False
+
+# Intersection: Given two (singly) linked lists, determine if the two lists intersect. Return the
+# intersecting node. Note that the intersection is defined based on reference, not value. That is, if the
+# kth node of the first linked list is the exact same node (by reference) as the j t h node of the second
+# linked list, then they are intersecting.
+
+def GetLinkedListIntersectionNode(l1, l2):
+    if (l1 == None or l2 == None):
+        return None
+    h1 = l1.head
+    len1 = 0
+    h2 = l2.head
+    len2 = 0
+    # get lenght of l1
+    while(h1 != None):
+        len1 = len1+1
+        h1 = h1.next
+    # get lenght of l1
+    while(h2 != None):
+        len2 = len2+1
+        h2 = h2.next
+    if (h1 != h2):
+        print("The lists don't intersect!")
+        return None
+    h1 = l1.head
+    h2 = l2.head
+    while (len1 >= len2):
+        h1 = h1.next
+        len1 = len1-1
+    while (len2 >= len1):
+        h2 = h2.next
+        len2 = len2-1    
+    while(h1 != None and h2 != None):
+        if (h1 == h2):
+            return h1
+        h1 = h1.next
+        h2 = h2.next
+        
 # driver code
 l1 = GenerateSampleLinkedList1()
 # l2 = GenerateSampleLinkedList2()
 # PrintLinkedList(l1)
-PrintLinkedList(l1)
-print(IsLinkedListPalindrome(l1))
-
-#sumlist = AddNumbersInLinkedList(l1, l2)
-#PrintLinkedList (sumlist)
+# PrintLinkedList(l1)
+# print(IsLinkedListPalindrome(l1))
+# sumlist = AddNumbersInLinkedList(l1, l2)
+# PrintLinkedList (sumlist)
 # l.Reverse()
 # RemoveDuplicates(l)
 # PartitionLinkedList(l,4)
-
+l1.last.next = l1.head
+print(IsCircularLinkedList(l1))
 

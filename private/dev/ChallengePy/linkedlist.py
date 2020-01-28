@@ -297,7 +297,7 @@ def GetLinkedListIntersectionNode(l1, l2):
             return h1
         h1 = h1.next
         h2 = h2.next
-        
+
 # driver code
 l1 = GenerateSampleLinkedList1()
 # l2 = GenerateSampleLinkedList2()
@@ -309,6 +309,6 @@ l1 = GenerateSampleLinkedList1()
 # l.Reverse()
 # RemoveDuplicates(l)
 # PartitionLinkedList(l,4)
-l1.last.next = l1.head
+# l1.last.next = l1.head
 print(IsCircularLinkedList(l1))
 

@@ -95,6 +95,10 @@ def IsRouteExistsBetweenNodes(g, startNode, endNode):
             n.state = VisitState.Visited
     return False
 
+# Minimal Tree: Given a sorted (increasing order) array with unique integer elements, write an
+# algorithm to create a binary search tree with minimal height.
+
+
 # driver code
 # g = CreateSampleGraph()
 #TraverseGraphBreadthFirst(g)

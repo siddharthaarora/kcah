@@ -1,5 +1,6 @@
 import queue
 import enum
+import linkedlist
 
 class VisitState(enum.Enum):
     NotVisited = 1
@@ -156,7 +157,30 @@ def CreateBST(a, start, end):
     node.right = CreateBST(a, (start + end) // 2 + 1, end) 
     return node
 
-# driver code
+# List of Depths: Given a binary tree, design an algorithm which creates a linked list of all the nodes
+# at each depth (e.g., if you have a tree with depth D, you'ld have D linked lists).
+def ListOfDepths(bst):
+    l = []
+    LinkedListofDepths(bst.root, l, 1)
+    return l
+
+def LinkedListofDepths(treeNode, l, level):
+    lln = linkedlist.LinkedListNode()
+    lln.value = treeNode.value
+    if (len(l) < level):
+        ll = linkedlist.LinkedList()
+        ll.Insert(lln)
+        l.append(ll)
+    else:
+        ll = l[level-1]
+        ll.Insert(lln)
+    if (treeNode.left != None):
+        LinkedListofDepths(treeNode.left, l, level+1)
+    if (treeNode.right != None):
+        LinkedListofDepths(treeNode.right, l, level+1)
+
+
+###### driver code ######
 
 # Graph Traversal
 # g = CreateSampleGraph()
@@ -193,4 +217,15 @@ def CreateBST(a, start, end):
 # BST from sorted array
 a = [1,2,3,4,5,6]
 bst = GenerateBalancedBST(a)
-TraverseBST(bst)
+# TraverseBST(bst)
+
+# List of Depths
+l = ListOfDepths(bst)
+for i in range(0, len(l)):
+    h = l[i].head
+    while(h != None):
+        print(h.value.value, end="")
+        if ( h.next != None):
+            print(" --> ", end="")
+        h = h.next
+    print()

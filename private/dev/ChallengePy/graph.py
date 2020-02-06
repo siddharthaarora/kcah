@@ -64,6 +64,10 @@ def CreateSampleBST():
     n5.value = 5
     n6 = Node()
     n6.value = 6
+    n7 = Node()
+    n7.value = 7
+    n8 = Node()
+    n8.value = 8
 
     bst = Tree()
     bst.root = n3
@@ -72,6 +76,8 @@ def CreateSampleBST():
     n5.right = n6
     n3.left = n2
     n2.left = n1
+    n1.left = n7
+    n1.right = n8
     return bst
 
 def TraverseGraphBreadthFirst(g):
@@ -179,53 +185,55 @@ def LinkedListofDepths(treeNode, l, level):
     if (treeNode.right != None):
         LinkedListofDepths(treeNode.right, l, level+1)
 
-
 ###### driver code ######
 
-# Graph Traversal
-# g = CreateSampleGraph()
-#TraverseGraphBreadthFirst(g)
+def main():
+    # Graph Traversal
+    # g = CreateSampleGraph()
+    #TraverseGraphBreadthFirst(g)
 
-# Route Exists
-# n1 = Node()
-# n1.value = 1
-# n2 = Node()
-# n2.value = 2
-# n3 = Node()
-# n3.value = 3
-# n4 = Node()
-# n4.value = 4
-# n5 = Node()
-# n5.value = 5
-# n6 = Node()
-# n6.value = 6
-# n1.children = [n4, n2]
-# n2.children = [n5]
-# n3.children = [n5]
-# n5.children = [n6]
-# n6.children = [n1]
-# g = Graph()
-# g.Insert(n1)
-# g.Insert(n2)
-# g.Insert(n3)
-# print(IsRouteExistsBetweenNodes(g, n1, n3))
+    # Route Exists
+    # n1 = Node()
+    # n1.value = 1
+    # n2 = Node()
+    # n2.value = 2
+    # n3 = Node()
+    # n3.value = 3
+    # n4 = Node()
+    # n4.value = 4
+    # n5 = Node()
+    # n5.value = 5
+    # n6 = Node()
+    # n6.value = 6
+    # n1.children = [n4, n2]
+    # n2.children = [n5]
+    # n3.children = [n5]
+    # n5.children = [n6]
+    # n6.children = [n1]
+    # g = Graph()
+    # g.Insert(n1)
+    # g.Insert(n2)
+    # g.Insert(n3)
+    # print(IsRouteExistsBetweenNodes(g, n1, n3))
 
-# BST Traversal
-#bst = CreateSampleBST()
-#TraverseBST(bst)
+    # BST Traversal
+    #bst = CreateSampleBST()
+    #TraverseBST(bst)
 
-# BST from sorted array
-a = [1,2,3,4,5,6]
-bst = GenerateBalancedBST(a)
-# TraverseBST(bst)
+    # BST from sorted array
+    a = [1,2,3,4,5,6]
+    bst = GenerateBalancedBST(a)
+    # TraverseBST(bst)
 
-# List of Depths
-l = ListOfDepths(bst)
-for i in range(0, len(l)):
-    h = l[i].head
-    while(h != None):
-        print(h.value.value, end="")
-        if ( h.next != None):
-            print(" --> ", end="")
-        h = h.next
-    print()
+    # List of Depths
+    l = ListOfDepths(bst)
+    for i in range(0, len(l)):
+        h = l[i].head
+        while(h != None):
+            print(h.value.value, end="")
+            if ( h.next != None):
+                print(" --> ", end="")
+            h = h.next
+        print()
+
+# main()

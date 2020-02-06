@@ -299,16 +299,18 @@ def GetLinkedListIntersectionNode(l1, l2):
         h2 = h2.next
 
 # driver code
-l1 = GenerateSampleLinkedList1()
-# l2 = GenerateSampleLinkedList2()
-# PrintLinkedList(l1)
-# PrintLinkedList(l1)
-# print(IsLinkedListPalindrome(l1))
-# sumlist = AddNumbersInLinkedList(l1, l2)
-# PrintLinkedList (sumlist)
-# l.Reverse()
-# RemoveDuplicates(l)
-# PartitionLinkedList(l,4)
-# l1.last.next = l1.head
-print(IsCircularLinkedList(l1))
+def main():
+    l1 = GenerateSampleLinkedList1()
+    # l2 = GenerateSampleLinkedList2()
+    # PrintLinkedList(l1)
+    # PrintLinkedList(l1)
+    # print(IsLinkedListPalindrome(l1))
+    # sumlist = AddNumbersInLinkedList(l1, l2)
+    # PrintLinkedList (sumlist)
+    # l.Reverse()
+    # RemoveDuplicates(l)
+    # PartitionLinkedList(l,4)
+    # l1.last.next = l1.head
+    print(IsCircularLinkedList(l1))
 
+#main()

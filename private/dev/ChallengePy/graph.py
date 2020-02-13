@@ -76,8 +76,8 @@ def CreateSampleBST():
     n5.right = n6
     n3.left = n2
     n2.left = n1
-    n1.left = n7
-    n1.right = n8
+    # n1.left = n7
+    # n1.right = n8
     return bst
 
 def TraverseGraphBreadthFirst(g):

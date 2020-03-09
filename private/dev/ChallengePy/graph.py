@@ -80,6 +80,24 @@ def CreateSampleBST():
     # n1.right = n8
     return bst
 
+def TraverseGraphDepthFirst(g):
+    if g == None or g.nodes == None or len(g.nodes) == 0:
+        print ("Graph is empty!")
+
+    for node in g.nodes:
+        GraphDepthFirstSearch(node)
+
+def GraphDepthFirstSearch(node):
+    if (node == None):
+        return
+    if (node.state != VisitState.Visited):
+        print(node.value)
+    node.state = VisitState.Visited
+    for child in node.children:
+        if child.state == VisitState.NotVisited:
+            GraphDepthFirstSearch(child)
+
+
 def TraverseGraphBreadthFirst(g):
     if g == None or g.nodes == None or len(g.nodes) == 0:
         print ("Graph is empty!")

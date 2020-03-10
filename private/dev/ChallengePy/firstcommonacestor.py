@@ -30,6 +30,6 @@ def TraversePostOrderToFindCommonAncestor(root, n1, n2, found):
 
 # driver code
 t = binarysearchtree2.CreateBSTOfSize(10)
-#binarysearchtree2.TraverseBST(t)
+binarysearchtree2.TraverseBST(t)
 a= FindFirstCommonAncestor(t.root, t.root.left.left, t.root.right.left)
 print(a)

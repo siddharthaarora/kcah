@@ -1,0 +1,5 @@
+values=raw_input()
+l=values.split(",")
+y=tuple(l)
+print(1)
+print(y)

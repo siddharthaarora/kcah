@@ -2,12 +2,12 @@
 #   |    |      
 #   |    o      
 #   |   /|\     
-#   |    |
+#   |    | 
 #   |  _/ \_
 #  _|_
 # |   |______
 # |          |
-# |__________|
+# |_________|
 
 import time
 import random
@@ -152,6 +152,9 @@ def Hangman():
             break              
 
         guess = input("guess a letter: ") 
+        if guess == word:
+                    print("You got it! You WON! Nice job!")
+                    sys.exit()
         if len(guess)>1:
             print("Exiting now, you didnt enter an appropriate letter.")
             time.sleep(0.5)
@@ -161,6 +164,8 @@ def Hangman():
         if guess not in word:  
     
             turns -= 1        
+            if guess == word:
+                    print("You got it! You WON! Nice job!")
     
             print("Wrong")
             if turns == 9:

@@ -164,8 +164,7 @@ def Hangman():
         if guess not in word:  
     
             turns -= 1        
-            if guess == word:
-                    print("You got it! You WON! Nice job!")
+            
     
             print("Wrong")
             if turns == 9:

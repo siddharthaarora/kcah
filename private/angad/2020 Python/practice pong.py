@@ -1,10 +1,12 @@
 import sys, time, pygame, random
 
+
 #file = 'backmusic.mp3'
 #pygame.init()
 #pygame.mixer.init()
 #pygame.mixer.music.load(file)
 #pygame.mixer.music.play(-1) 
+
 # GAME MANAGER OBJECT
 GM = None
 GAME_STARTED = False
@@ -101,8 +103,8 @@ def load_ball_image():
     BALL = pygame.image.load("intro_ball.gif")
     BALL_RECT = BALL.get_rect()
 
-    BALL_RECT.left = WIDTH / 2
-    BALL_RECT.top = HEIGHT / 2
+    BALL_RECT.left = WIDTH // 2
+    BALL_RECT.top = HEIGHT // 2
 
     BALL_SPEED = [random_number(-3, 3), random_number(-3, 3)]
 
@@ -145,7 +147,6 @@ def listen_for_events():
                 else:
                     BALL_SPEED = [0,0]
                     IS_PAUSED = True 
-
             if event.key == pygame.K_w:
                 LEFT_PADDLE_Y = max(LEFT_PADDLE_Y - 10, 0)
             elif event.key == pygame.K_s:
@@ -158,49 +159,54 @@ def listen_for_events():
 
 
 def move_ball():
-  global BALL
-  global BALL_RECT
-  global BALL_SPEED
+    global BALL
+    global BALL_RECT
+    global BALL_SPEED
 
-  ball_center_x = int(BALL_RECT.left + BALL_RECT.right / 2)
-  ball_center_y = int(BALL_RECT.top + BALL_RECT.bottom / 2)
-  #print(BALL_RECT.left, BALL_RECT.right, BALL_RECT.top, BALL_RECT.bottom)
-  print(BALL_SPEED)
-  BALL_RECT = BALL_RECT.move(BALL_SPEED)
 
-  # Left paddle collision
-  l_paddle_rect = pygame.Rect(LEFT_PADDLE_X, LEFT_PADDLE_Y, PADDLE_W, PADDLE_H)
-  if BALL_RECT.colliderect(l_paddle_rect):
-    BALL_SPEED[0] *= -1.1
+    ball_center_x = BALL_RECT.left + BALL_RECT.right // 2
+    ball_center_y = BALL_RECT.top + BALL_RECT.bottom // 2
+    
+    BALL_RECT = BALL_RECT.move(BALL_SPEED)
 
-  # Right paddle collision
-  r_paddle_rect = pygame.Rect(RIGHT_PADDLE_X, RIGHT_PADDLE_Y, PADDLE_W, PADDLE_H)
-  if BALL_RECT.colliderect(r_paddle_rect):
-    BALL_SPEED[0] *= -1.1
+    if BALL_SPEED[1] <= -3:
+      BALL_SPEED[1] = -3
+    if BALL_SPEED[0] <= -3:
+      BALL_SPEED[0] = -3
+    if BALL_SPEED[1] >= 3:
+      BALL_SPEED[1] = 3
+    if BALL_SPEED[0] >= 3:
+      BALL_SPEED[0] = 3
+
+    # Left paddle collision
+    l_paddle_rect = pygame.Rect(LEFT_PADDLE_X, LEFT_PADDLE_Y, PADDLE_W, PADDLE_H)
+    if BALL_RECT.colliderect(l_paddle_rect):
+        BALL_SPEED[0] *= -1.1
+
+    # Right paddle collision
+    r_paddle_rect = pygame.Rect(RIGHT_PADDLE_X, RIGHT_PADDLE_Y, PADDLE_W, PADDLE_H)
+    if BALL_RECT.colliderect(r_paddle_rect):
+        BALL_SPEED[0] *= -1.1
        
-  # Top/Bottom of screen collision
-  if BALL_RECT.top < 0 or BALL_RECT.bottom > HEIGHT:
-    BALL_SPEED[1] *= -1.1
+    # Top/Bottom of screen collision
+    if BALL_RECT.top < 0 or BALL_RECT.bottom > HEIGHT:
+        BALL_SPEED[1] *= -1.1
 
-  # RIGHT SCORES
-  if BALL_RECT.left < 0:
-    BALL_SPEED[1] *= -1.1  
+    # RIGHT SCORES
+    if BALL_RECT.left < 0:
+      BALL_SPEED[0] *= -1.1
       # HANDLE THE BALL HITTING THE LEFT SIDE OF SCREEN
+      if BALL_RECT.left <= 0:
+        GM.score_point("RIGHT")
+    
+    # LEFT SCORES
+    if BALL_RECT.right > WIDTH:
+      BALL_SPEED[0] *= -1.1
+      # HANDLE THE BALL HITTING THE RIGHT SIDE OF SCREEN
+      if BALL_RECT.right >= WIDTH:
+        GM.score_point("LEFT")
 
-  # LEFT SCORES
-  if BALL_RECT.right > WIDTH:
-    BALL_SPEED[0] *= -1.1 
-  # HANDLE THE BALL HITTING THE RIGHT SIDE OF SCREEN
-  if BALL_SPEED[0] <= -10:
-    BALL_SPEED[0] = -10
-  if BALL_SPEED[1] <= -10:
-    BALL_SPEED[1] = -10
-  if BALL_SPEED[0] >= 10:
-    BALL_SPEED[0] = 10
-  if BALL_SPEED[1] >= 10:
-    BALL_SPEED[1] = 10
-  BALL_SPEED[0] = min(BALL_SPEED[0], 10)
-  BALL_SPEED[1] = min(BALL_SPEED[1], 10)
+    update_screen()
 
 def update_screen():
     global SCREEN
@@ -264,10 +270,8 @@ class GameManager():
 
       # HANDLE IF REACHING WINNING SCORE
       if self.left_score == self.winning_score:
-        print("You Lost.")
+        print("YOU WON!")
         GAME_ENDED = True
-        sys.exit()
-
     if scorer == "RIGHT":
       # increment score
       self.right_score += 1
@@ -277,10 +281,9 @@ class GameManager():
 
       # HANDLE IF REACHING WINNING SCORE
       if self.right_score == self.winning_score:
-        print("You Lost.")
+        print("YOU LOST!")
         GAME_ENDED = True
-        sys.exit()
-    
+
     # regardless of who scored, reset ball
     self.ball_reset()
 
@@ -289,11 +292,10 @@ class GameManager():
     global BALL_SPEED
 
     # PUT THE BALL IN THE MIDDLE OF THE SCREEN
-    BALL_RECT.left = WIDTH / 2
-    BALL_RECT.top = HEIGHT / 2
+    self.ball_reset
 
     # SET THE BALL SPEED TO SOME RANDOM NUMBERS
-    BALL_SPEED = [random_number(-3, 3), random_number(-3, 3)]
+    BALL_SPEED[0] *= -1.1
 
 
   def draw_victory_screen(self, scorer):
@@ -302,9 +304,10 @@ class GameManager():
     global GAME_ENDED
 
     # MOVE BALL OFF THE SCREEN (set top/left to a number that wouldn't show up on the screen)
-    BALL_RECT.left = WIDTH * 1.5
-    BALL_RECT.top = HEIGHT * 1.5
+    BALL_RECT.left = 99999999
+    BALL_RECT.right = 9999999
 
+    draw_victory_screen()
     start_string = "{} wins! Press 'q' to quit, 'r' to restart".format(scorer)
     START_TEXT = FONT.render(start_string, True, white, black)
     GAME_ENDED = True
@@ -312,8 +315,7 @@ class GameManager():
   def reset_game(self):
     global SCORE_TEXT
     # RESET THE BALL
-    BALL_RECT.left = WIDTH / 2
-    BALL_RECT.top = HEIGHT / 2
+    self.right_score
 
     # RESET THE SCORE VARIABLES
     self.left_score = 0

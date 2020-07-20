@@ -1,5 +1,7 @@
-sentence = "Hi my name is Shanveer!"
-print(sentence)
+# coronavirus
 
+sentence = "coronavirus"
+# iterate over the string and print characters
 for letter in sentence:
-    print(letter)
+    if letter == "o" or letter == "a" or letter == "i" or letter == "u":
+        print(letter)
